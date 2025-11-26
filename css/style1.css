@@ -1,0 +1,123 @@
+/* ============================
+   WATCHLIST DASHBOARD STYLING
+   ============================ */
+
+.watchlist-wrapper {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.watchlist-title {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 25px;
+    font-weight: 700;
+    text-shadow: 0 0 18px rgba(0,163,163,0.6);
+}
+
+/* GRID */
+.watchlist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+}
+
+/* MOVIE CARD */
+.watchlist-card {
+    background: #1c1c1c;
+    border-radius: 20px;
+    padding: 14px;
+    border: 1px solid rgba(255,255,255,0.07);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+    transition: 0.2s ease-in-out;
+}
+
+.watchlist-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-teal);
+    box-shadow:
+        0 16px 35px rgba(0,163,163,0.35),
+        0 0 12px rgba(0,163,163,0.6);
+}
+
+/* POSTER */
+.watchlist-poster {
+    width: 100%;
+    height: 300px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #111;
+}
+
+.watchlist-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* MOVIE INFO */
+.watchlist-card h3 {
+    font-size: 1.1rem;
+    margin: 10px 0 5px;
+    color: #fff;
+}
+
+.watchlist-meta {
+    font-size: .85rem;
+    color: var(--text-dim);
+}
+
+/* BUTTON */
+.remove-btn {
+    margin-top: 12px;
+    width: 100%;
+    background: rgba(255,255,255,0.06);
+    padding: 10px;
+    border-radius: 999px;
+    color: #fff;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.remove-btn:hover {
+    background: rgba(255,40,40,0.18);
+    border-color: rgba(255,40,40,0.5);
+    color: #ff5a5a;
+}
+
+/* BACK LINK */
+.back-home {
+    display: inline-block;
+    margin-top: 25px;
+    font-size: 0.95rem;
+    color: var(--accent-teal);
+    text-decoration: none;
+}
+
+.back-home:hover {
+    text-decoration: underline;
+}
+ 
+
+.watch-btn {
+    display: block;
+    margin-top: 10px;
+    background: var(--accent-orange);
+    padding: 10px;
+    text-align: center;
+    border-radius: 999px;
+    font-weight: 600;
+    color: #111;
+    text-decoration: none;
+    transition: 0.2s ease;
+    box-shadow: 0 10px 20px rgba(245,124,32,0.5);
+}
+
+.watch-btn:hover {
+    filter: brightness(1.08);
+    box-shadow: 0 14px 26px rgba(245,124,32,0.7);
+    transform: translateY(-2px);
+}
