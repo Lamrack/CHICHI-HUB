@@ -1,20 +1,22 @@
 <?php
+session_start();
+
 require_once '../config/db.php';
-require_once '../includes/header.php';
 
-
+// 🔐 Step 1: Check login BEFORE loading the header
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit;
 }
 
-$user_id = $_SESSION['user_id'];
+// 🔹 Step 2: Safe variables (define BEFORE using them)
+$user_id  = $_SESSION['user_id'];
+$username = $_SESSION['username'] ?? '';
 
-//  saved movies will come.
+// 🔹 Step 3: Load saved watchlist
 $stmt = $pdo->prepare("
-    SELECT m.movie_id, m.title, m.genre, m.release_year, m.poster_url ,m.netflix_url,
-        m.prime_url,
-        m.disney_url
+    SELECT m.movie_id, m.title, m.genre, m.release_year, m.poster_url,
+           m.netflix_url, m.prime_url, m.disney_url
     FROM watchlist w
     JOIN movies m ON w.movie_id = m.movie_id
     WHERE w.user_id = ?
@@ -22,7 +24,11 @@ $stmt = $pdo->prepare("
 $stmt->execute([$user_id]);
 $watchlist = $stmt->fetchAll();
 
+// 🔹 Step 4: LOAD HEADER only AFTER session and variables are ready
+require_once '../includes/header.php';
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -78,8 +84,6 @@ $watch_link = $m['netflix_url']
 >       Watch Now
     </a>
 <?php endif; ?>
-
-
 
            
             </form>

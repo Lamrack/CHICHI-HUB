@@ -357,12 +357,18 @@ form {
    MOVIE GRID CARDS
    ================================ */
 
+/* ================================
+   MOVIE GRID — FIXED SIZE CARDS
+   ================================ */
+
 .content-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(210px,100%), 1fr));
+    display: flex;               /* use flex instead of grid */
+    flex-wrap: wrap;             /* wrap cards to next row */
     gap: 20px;
+    justify-content: center;     /* center even with 1 result */
 }
 
+/* Fixed-size movie card */
 .movie-card {
     background-color: var(--card-dark);
     border-radius: 16px;
@@ -375,6 +381,10 @@ form {
     transition: all .18s ease;
     display: flex;
     flex-direction: column;
+
+    width: 210px;              /* 🔒 always same size */
+    min-width: 210px;
+    max-width: 210px;
 }
 
 .movie-card:hover {
@@ -385,20 +395,23 @@ form {
     border-color: rgba(0,163,163,.4);
 }
 
+/* Poster wrapper: keeps shape */
 .movie-poster-wrap {
     background-color: #1d1d1d;
     width: 100%;
-    aspect-ratio: 2/3;
+    aspect-ratio: 2/3;          /* consistent poster shape */
     overflow: hidden;
     position: relative;
 }
 
+/* Poster image: always fits */
 .movie-poster-wrap img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
 }
+
 
 .movie-body {
     padding: 14px 16px 16px;
@@ -596,5 +609,8 @@ form {
     text-align: center;
     padding-inline: 16px;
 }
+
+
+
 
 

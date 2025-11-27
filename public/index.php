@@ -46,6 +46,8 @@ if (isset($_SESSION['user_id'])) {
 <head>
     <meta charset="UTF-8">
     <title>All Movies</title>
+        <link rel="stylesheet" href="../css/style.css">
+
 </head>
 <body>
 

@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../config/db.php';
-require_once '../src/UserRegister.php';
+require '../includes/validation.php';
 
 // Block non-admins (same logic as other admin pages)
 if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
@@ -9,7 +9,6 @@ if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
     exit;
 }
 
-$register = new UserRegister($pdo);
 $successMessage = "";
 $errorMessage   = "";
 
@@ -19,13 +18,57 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'] ?? '';
     $confirm  = $_POST['confirm'] ?? '';
 
-    // Re-use existing registration logic/validation
-    $result = $register->register($email, $password, $confirm);
-
-    if ($result['success']) {
-        $successMessage = $result['message'];
+    // BASIC CHECKS
+    if ($email === '' || $password === '' || $confirm === '') {
+        $errorMessage = "Email and password are required.";
+    }
+    elseif ($password !== $confirm) {
+        $errorMessage = "Passwords don't match.";
     } else {
-        $errorMessage = $result['message'];
+        // EMAIL VALIDATION (shared)
+        $msg = '';
+        if (!validate_email($email, $msg)) {
+            $errorMessage = $msg;
+        }
+        // PASSWORD STRENGTH (shared)
+        elseif (!validate_password_strength($password, $msg)) {
+            $errorMessage = $msg;
+        } else {
+            // Check duplicate email
+            $stmt = $pdo->prepare("SELECT user_id FROM users WHERE email = ?");
+            $stmt->execute([$email]);
+            if ($stmt->fetch()) {
+                $errorMessage = "That email is already registered.";
+            } else {
+                // Insert user
+                $password_hash = password_hash($password, PASSWORD_DEFAULT);
+
+                // auto-generate a username from email for admin-created users
+                $localPart = strstr($email, '@', true);
+                if ($localPart === false || $localPart === '') {
+                    $localPart = 'user';
+                }
+                $username = preg_replace('/[^A-Za-z0-9_]/', '_', $localPart);
+                if ($username === '') {
+                    $username = 'user';
+                }
+
+                // default favourite_movie for admin-created users
+                $favouriteMovie = 'N/A (admin created)';
+
+                $ins = $pdo->prepare("
+                    INSERT INTO users (username, email, password_hash, favourite_movie)
+                    VALUES (?, ?, ?, ?)
+                ");
+                $ok = $ins->execute([$username, $email, $password_hash, $favouriteMovie]);
+
+                if ($ok) {
+                    $successMessage = "User created successfully.";
+                } else {
+                    $errorMessage = "Failed to create user.";
+                }
+            }
+        }
     }
 }
 

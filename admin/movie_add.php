@@ -3,7 +3,7 @@
 session_start();
 require '../config/db.php';
 require_once '../includes/movie_validation.php';
-require_once 'admin_header.php'; // adjust if needed
+require_once 'admin_header.php'; 
 
 // block non-admins
 if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
@@ -106,7 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label class="field-label">Genre</label>
             <input type="text" name="genre" class="input-field"
                    value="<?php echo htmlspecialchars($genre); ?>">
-        </div>
+            </div>
 
         <div class="form-group">
             <label class="field-label">Release Year</label>
