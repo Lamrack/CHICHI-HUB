@@ -4,7 +4,7 @@
 use PHPUnit\Framework\TestCase;
 
 // ⬇️ Adjust this path if needed
-require_once __DIR__ . '/../includes/movie_validation.php';
+require_once __DIR__ . '/../src/movie_validation.php';
 
 class MovieValidationTest extends TestCase
 {

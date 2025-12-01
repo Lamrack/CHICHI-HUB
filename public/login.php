@@ -1,6 +1,8 @@
 <?php
 session_start();
 require '../config/db.php';
+require '../src/Auth.php';
+
 
 $error = '';
 
@@ -8,25 +10,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email    = $_POST['email'] ?? '';
     $password = $_POST['password'] ?? '';
 
-    if ($email === '' || $password === '') {
-        $error = "Please fill in both fields.";
+    $auth   = new Auth($pdo);
+    $result = $auth->attemptLogin($email, $password);
+
+    if ($result['success']) {
+        // Password is correct – go to step 2 (favourite movie)
+        $_SESSION['pending_user_id'] = $result['user_id'];
+        header('Location: verify_movie.php');
+        exit;
     } else {
-        // Find user by email
-        $stmt = $pdo->prepare("SELECT user_id, email, password_hash FROM users WHERE email = ?");
-        $stmt->execute([$email]);
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($user && password_verify($password, $user['password_hash'])) {
-            // ✅ Password is correct – now go to step 2 (favourite movie)
-            $_SESSION['pending_user_id'] = $user['user_id'];   // temp session for step 2
-
-            header('Location: verify_movie.php');
-            exit;
-        } else {
-            $error = "Invalid email or password.";
-        }
+        $error = $result['message'];
     }
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

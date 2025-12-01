@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../config/db.php';
-require '../includes/validation.php';
+require '../src/validation.php';
 
 $error = '';
 $success = '';

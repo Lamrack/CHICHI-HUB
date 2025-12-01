@@ -3,8 +3,7 @@
 
 use PHPUnit\Framework\TestCase;
 
-// ⬇️ Adjust path if needed
-require_once __DIR__ . '/../includes/watchlist_validation.php';
+require_once __DIR__ . '/../src/watchlist_validation.php';
 
 class WatchlistValidationTest extends TestCase
 {
