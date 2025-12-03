@@ -2,7 +2,7 @@
 // admin/movie_add.php
 session_start();
 require '../config/db.php';
-require_once '../includes/movie_validation.php';
+require_once '../src/movie_validation.php';
 require_once 'admin_header.php'; 
 
 // block non-admins

@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../config/db.php';
-require_once '../includes/watchlist_validation.php';
+require_once '../src/watchlist_validation.php';
 
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');

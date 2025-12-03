@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../config/db.php';
-require '../includes/validation.php';
+require '../src/validation.php';
 
 // Block non-admins (same logic as other admin pages)
 if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {

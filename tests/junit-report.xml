@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="CLI Arguments" tests="52" assertions="106" errors="0" failures="0" skipped="0" time="0.578355">
+    <testsuite name="LoginTest" file="C:\xampp\htdocs\CHICHI HUB\tests\LoginTest.php" tests="4" assertions="17" errors="0" failures="0" skipped="0" time="0.314795">
+      <testcase name="testFailsWhenFieldsEmpty" file="C:\xampp\htdocs\CHICHI HUB\tests\LoginTest.php" line="37" class="LoginTest" classname="LoginTest" assertions="4" time="0.015954"/>
+      <testcase name="testFailsWhenEmailDoesNotExist" file="C:\xampp\htdocs\CHICHI HUB\tests\LoginTest.php" line="46" class="LoginTest" classname="LoginTest" assertions="4" time="0.002131"/>
+      <testcase name="testFailsWhenPasswordIsWrong" file="C:\xampp\htdocs\CHICHI HUB\tests\LoginTest.php" line="55" class="LoginTest" classname="LoginTest" assertions="4" time="0.146747"/>
+      <testcase name="testLoginSucceedsWithCorrectCredentials" file="C:\xampp\htdocs\CHICHI HUB\tests\LoginTest.php" line="72" class="LoginTest" classname="LoginTest" assertions="5" time="0.149963"/>
+    </testsuite>
+    <testsuite name="MovieCrudTest" file="C:\xampp\htdocs\CHICHI HUB\tests\MovieCrudTest.php" tests="4" assertions="35" errors="0" failures="0" skipped="0" time="0.037566">
+      <testcase name="testAddMovieFailsWithInvalidTitle" file="C:\xampp\htdocs\CHICHI HUB\tests\MovieCrudTest.php" line="49" class="MovieCrudTest" classname="MovieCrudTest" assertions="4" time="0.005363"/>
+      <testcase name="testAddMovieSucceedsWithValidData" file="C:\xampp\htdocs\CHICHI HUB\tests\MovieCrudTest.php" line="66" class="MovieCrudTest" classname="MovieCrudTest" assertions="14" time="0.004048"/>
+      <testcase name="testUpdateMovieChangesFields" file="C:\xampp\htdocs\CHICHI HUB\tests\MovieCrudTest.php" line="106" class="MovieCrudTest" classname="MovieCrudTest" assertions="13" time="0.006347"/>
+      <testcase name="testUpdateMovieFailsWithInvalidData" file="C:\xampp\htdocs\CHICHI HUB\tests\MovieCrudTest.php" line="154" class="MovieCrudTest" classname="MovieCrudTest" assertions="4" time="0.021808"/>
+    </testsuite>
+    <testsuite name="MovieValidationTest" file="C:\xampp\htdocs\CHICHI HUB\tests\MovieValidationTest.php" tests="23" assertions="23" errors="0" failures="0" skipped="0" time="0.003941">
+      <testcase name="testTitleMinLessOne" file="C:\xampp\htdocs\CHICHI HUB\tests\MovieValidationTest.php" line="31" class="MovieValidationTest" classname="MovieValidationTest" assertions="1" time="0.000209"/>
+      <testcase name="testTitleMin" file="C:\xampp\htdocs\CHICHI HUB\tests\MovieValidationTest.php" line="39" class="MovieValidationTest" classname="MovieValidationTest" assertions="1" time="0.000190"/>
+      <testcase name="testTitleMinPlusOne" file="C:\xampp\htdocs\CHICHI HUB\tests\MovieValidationTest.php" line="47" class="MovieValidationTest" classname="MovieValidationTest" assertions="1" time="0.000199"/>
+      <testcase name="testTitleMaxLessOne" file="C:\xampp\htdocs\CHICHI HUB\tests\MovieValidationTest.php" line="55" class="MovieValidationTest" classname="MovieValidationTest" assertions="1" time="0.000215"/>
+      <testcase name="testTitleMax" file="C:\xampp\htdocs\CHICHI HUB\tests\MovieValidationTest.php" line="63" class="MovieValidationTest" classname="MovieValidationTest" assertions="1" time="0.000176"/>
+      <testcase name="testTitleMaxPlusOne" file="C:\xampp\htdocs\CHICHI HUB\tests\MovieValidationTest.php" line="71" class="MovieValidationTest" classname="MovieValidationTest" assertions="1" time="0.000198"/>
+      <testcase name="testTitleExtremeMax" file="C:\xampp\htdocs\CHICHI HUB\tests\MovieValidationTest.php" line="79" class="MovieValidationTest" classname="MovieValidationTest" assertions="1" time="0.000232"/>
+      <testcase name="testGenreMin" file="C:\xampp\htdocs\CHICHI HUB\tests\MovieValidationTest.php" line="91" class="MovieValidationTest" classname="MovieValidationTest" assertions="1" time="0.000153"/>
+      <testcase name="testGenreMaxLessOne" file="C:\xampp\htdocs\CHICHI HUB\tests\MovieValidationTest.php" line="99" class="MovieValidationTest" classname="MovieValidationTest" assertions="1" time="0.000126"/>
+      <testcase name="testGenreMax" file="C:\xampp\htdocs\CHICHI HUB\tests\MovieValidationTest.php" line="107" class="MovieValidationTest" classname="MovieValidationTest" assertions="1" time="0.000113"/>
+      <testcase name="testGenreMaxPlusOne" file="C:\xampp\htdocs\CHICHI HUB\tests\MovieValidationTest.php" line="115" class="MovieValidationTest" classname="MovieValidationTest" assertions="1" time="0.000121"/>
+      <testcase name="testYearNonNumeric" file="C:\xampp\htdocs\CHICHI HUB\tests\MovieValidationTest.php" line="127" class="MovieValidationTest" classname="MovieValidationTest" assertions="1" time="0.000113"/>
+      <testcase name="testYearMinLessOne" file="C:\xampp\htdocs\CHICHI HUB\tests\MovieValidationTest.php" line="135" class="MovieValidationTest" classname="MovieValidationTest" assertions="1" time="0.000115"/>
+      <testcase name="testYearMin" file="C:\xampp\htdocs\CHICHI HUB\tests\MovieValidationTest.php" line="143" class="MovieValidationTest" classname="MovieValidationTest" assertions="1" time="0.000109"/>
+      <testcase name="testYearCurrentPlusOneAllowed" file="C:\xampp\htdocs\CHICHI HUB\tests\MovieValidationTest.php" line="151" class="MovieValidationTest" classname="MovieValidationTest" assertions="1" time="0.000122"/>
+      <testcase name="testYearTooFarInFuture" file="C:\xampp\htdocs\CHICHI HUB\tests\MovieValidationTest.php" line="160" class="MovieValidationTest" classname="MovieValidationTest" assertions="1" time="0.000215"/>
+      <testcase name="testDescriptionMin" file="C:\xampp\htdocs\CHICHI HUB\tests\MovieValidationTest.php" line="173" class="MovieValidationTest" classname="MovieValidationTest" assertions="1" time="0.000255"/>
+      <testcase name="testDescriptionMaxLessOne" file="C:\xampp\htdocs\CHICHI HUB\tests\MovieValidationTest.php" line="181" class="MovieValidationTest" classname="MovieValidationTest" assertions="1" time="0.000202"/>
+      <testcase name="testDescriptionMax" file="C:\xampp\htdocs\CHICHI HUB\tests\MovieValidationTest.php" line="189" class="MovieValidationTest" classname="MovieValidationTest" assertions="1" time="0.000196"/>
+      <testcase name="testDescriptionMaxPlusOne" file="C:\xampp\htdocs\CHICHI HUB\tests\MovieValidationTest.php" line="197" class="MovieValidationTest" classname="MovieValidationTest" assertions="1" time="0.000172"/>
+      <testcase name="testDescriptionExtremeMax" file="C:\xampp\htdocs\CHICHI HUB\tests\MovieValidationTest.php" line="205" class="MovieValidationTest" classname="MovieValidationTest" assertions="1" time="0.000166"/>
+      <testcase name="testPosterUrlMax" file="C:\xampp\htdocs\CHICHI HUB\tests\MovieValidationTest.php" line="217" class="MovieValidationTest" classname="MovieValidationTest" assertions="1" time="0.000139"/>
+      <testcase name="testPosterUrlMaxPlusOne" file="C:\xampp\htdocs\CHICHI HUB\tests\MovieValidationTest.php" line="225" class="MovieValidationTest" classname="MovieValidationTest" assertions="1" time="0.000204"/>
+    </testsuite>
+    <testsuite name="UserRegisterTest" file="C:\xampp\htdocs\CHICHI HUB\tests\UserRegisterTest.php" tests="4" assertions="14" errors="0" failures="0" skipped="0" time="0.177127">
+      <testcase name="testFailsWhenPasswordsDontMatch" file="C:\xampp\htdocs\CHICHI HUB\tests\UserRegisterTest.php" line="36" class="UserRegisterTest" classname="UserRegisterTest" assertions="3" time="0.003027"/>
+      <testcase name="testFailsWhenEmailInvalid" file="C:\xampp\htdocs\CHICHI HUB\tests\UserRegisterTest.php" line="48" class="UserRegisterTest" classname="UserRegisterTest" assertions="3" time="0.016036"/>
+      <testcase name="testFailsWhenEmailAlreadyExists" file="C:\xampp\htdocs\CHICHI HUB\tests\UserRegisterTest.php" line="60" class="UserRegisterTest" classname="UserRegisterTest" assertions="3" time="0.079711"/>
+      <testcase name="testSucceedsWithValidData" file="C:\xampp\htdocs\CHICHI HUB\tests\UserRegisterTest.php" line="77" class="UserRegisterTest" classname="UserRegisterTest" assertions="5" time="0.078352"/>
+    </testsuite>
+    <testsuite name="ValidationTest" file="C:\xampp\htdocs\CHICHI HUB\tests\ValidationTest.php" tests="10" assertions="10" errors="0" failures="0" skipped="0" time="0.043961">
+      <testcase name="testValidEmail" file="C:\xampp\htdocs\CHICHI HUB\tests\ValidationTest.php" line="13" class="ValidationTest" classname="ValidationTest" assertions="1" time="0.006910"/>
+      <testcase name="testInvalidEmailFormat" file="C:\xampp\htdocs\CHICHI HUB\tests\ValidationTest.php" line="19" class="ValidationTest" classname="ValidationTest" assertions="1" time="0.000315"/>
+      <testcase name="testEmailMustStartWithLetter" file="C:\xampp\htdocs\CHICHI HUB\tests\ValidationTest.php" line="25" class="ValidationTest" classname="ValidationTest" assertions="1" time="0.000219"/>
+      <testcase name="testInvalidDomain" file="C:\xampp\htdocs\CHICHI HUB\tests\ValidationTest.php" line="31" class="ValidationTest" classname="ValidationTest" assertions="1" time="0.035121"/>
+      <testcase name="testStrongPassword" file="C:\xampp\htdocs\CHICHI HUB\tests\ValidationTest.php" line="41" class="ValidationTest" classname="ValidationTest" assertions="1" time="0.000349"/>
+      <testcase name="testPasswordTooShort" file="C:\xampp\htdocs\CHICHI HUB\tests\ValidationTest.php" line="47" class="ValidationTest" classname="ValidationTest" assertions="1" time="0.000292"/>
+      <testcase name="testPasswordMissingUppercase" file="C:\xampp\htdocs\CHICHI HUB\tests\ValidationTest.php" line="53" class="ValidationTest" classname="ValidationTest" assertions="1" time="0.000186"/>
+      <testcase name="testPasswordMissingLowercase" file="C:\xampp\htdocs\CHICHI HUB\tests\ValidationTest.php" line="59" class="ValidationTest" classname="ValidationTest" assertions="1" time="0.000218"/>
+      <testcase name="testPasswordMissingNumber" file="C:\xampp\htdocs\CHICHI HUB\tests\ValidationTest.php" line="65" class="ValidationTest" classname="ValidationTest" assertions="1" time="0.000159"/>
+      <testcase name="testPasswordMissingSpecialChar" file="C:\xampp\htdocs\CHICHI HUB\tests\ValidationTest.php" line="71" class="ValidationTest" classname="ValidationTest" assertions="1" time="0.000193"/>
+    </testsuite>
+    <testsuite name="WatchlistValidationTest" file="C:\xampp\htdocs\CHICHI HUB\tests\WatchlistValidationTest.php" tests="7" assertions="7" errors="0" failures="0" skipped="0" time="0.000964">
+      <testcase name="testValidIds" file="C:\xampp\htdocs\CHICHI HUB\tests\WatchlistValidationTest.php" line="19" class="WatchlistValidationTest" classname="WatchlistValidationTest" assertions="1" time="0.000185"/>
+      <testcase name="testInvalidUserNonNumeric" file="C:\xampp\htdocs\CHICHI HUB\tests\WatchlistValidationTest.php" line="25" class="WatchlistValidationTest" classname="WatchlistValidationTest" assertions="1" time="0.000185"/>
+      <testcase name="testInvalidMovieNonNumeric" file="C:\xampp\htdocs\CHICHI HUB\tests\WatchlistValidationTest.php" line="31" class="WatchlistValidationTest" classname="WatchlistValidationTest" assertions="1" time="0.000134"/>
+      <testcase name="testInvalidUserZero" file="C:\xampp\htdocs\CHICHI HUB\tests\WatchlistValidationTest.php" line="37" class="WatchlistValidationTest" classname="WatchlistValidationTest" assertions="1" time="0.000114"/>
+      <testcase name="testInvalidMovieZero" file="C:\xampp\htdocs\CHICHI HUB\tests\WatchlistValidationTest.php" line="43" class="WatchlistValidationTest" classname="WatchlistValidationTest" assertions="1" time="0.000113"/>
+      <testcase name="testInvalidUserNegative" file="C:\xampp\htdocs\CHICHI HUB\tests\WatchlistValidationTest.php" line="49" class="WatchlistValidationTest" classname="WatchlistValidationTest" assertions="1" time="0.000114"/>
+      <testcase name="testInvalidMovieNegative" file="C:\xampp\htdocs\CHICHI HUB\tests\WatchlistValidationTest.php" line="55" class="WatchlistValidationTest" classname="WatchlistValidationTest" assertions="1" time="0.000119"/>
+    </testsuite>
+  </testsuite>
+</testsuites>

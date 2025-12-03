@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Test Documentation</title>
+        <style>
+            body {
+                text-rendering: optimizeLegibility;
+                font-family: Source SansSerif Pro, Arial, sans-serif;
+                font-variant-ligatures: common-ligatures;
+                font-kerning: normal;
+                margin-left: 2rem;
+                background-color: #fff;
+                color: #000;
+            }
+
+            body > ul > li {
+                font-size: larger;
+            }
+
+            h2 {
+                font-size: larger;
+                text-decoration-line: underline;
+                text-decoration-thickness: 2px;
+                margin: 0;
+                padding: 0.5rem 0;
+            }
+
+            ul {
+                list-style: none;
+                margin: 0 0 2rem;
+                padding: 0 0 0 1rem;
+                text-indent: -1rem;
+            }
+
+            .success:before {
+                color: #4e9a06;
+                content: '✓';
+                padding-right: 0.5rem;
+            }
+
+            .defect {
+                color: #a40000;
+            }
+
+            .defect:before {
+                color: #a40000;
+                content: '✗';
+                padding-right: 0.5rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Login</h2>
+        <ul>
+            <li class="success">Fails when fields empty</li>
+            <li class="success">Fails when email does not exist</li>
+            <li class="success">Fails when password is wrong</li>
+            <li class="success">Login succeeds with correct credentials</li>
+        </ul>
+        <h2>Movie Crud</h2>
+        <ul>
+            <li class="success">Add movie fails with invalid title</li>
+            <li class="success">Add movie succeeds with valid data</li>
+            <li class="success">Update movie changes fields</li>
+            <li class="success">Update movie fails with invalid data</li>
+        </ul>
+        <h2>Movie Validation</h2>
+        <ul>
+            <li class="success">Title min less one</li>
+            <li class="success">Title min</li>
+            <li class="success">Title min plus one</li>
+            <li class="success">Title max less one</li>
+            <li class="success">Title max</li>
+            <li class="success">Title max plus one</li>
+            <li class="success">Title extreme max</li>
+            <li class="success">Genre min</li>
+            <li class="success">Genre max less one</li>
+            <li class="success">Genre max</li>
+            <li class="success">Genre max plus one</li>
+            <li class="success">Year non numeric</li>
+            <li class="success">Year min less one</li>
+            <li class="success">Year min</li>
+            <li class="success">Year current plus one allowed</li>
+            <li class="success">Year too far in future</li>
+            <li class="success">Description min</li>
+            <li class="success">Description max less one</li>
+            <li class="success">Description max</li>
+            <li class="success">Description max plus one</li>
+            <li class="success">Description extreme max</li>
+            <li class="success">Poster url max</li>
+            <li class="success">Poster url max plus one</li>
+        </ul>
+        <h2>User Register</h2>
+        <ul>
+            <li class="success">Fails when passwords dont match</li>
+            <li class="success">Fails when email invalid</li>
+            <li class="success">Fails when email already exists</li>
+            <li class="success">Succeeds with valid data</li>
+        </ul>
+        <h2>Validation</h2>
+        <ul>
+            <li class="success">Valid email</li>
+            <li class="success">Invalid email format</li>
+            <li class="success">Email must start with letter</li>
+            <li class="success">Invalid domain</li>
+            <li class="success">Strong password</li>
+            <li class="success">Password too short</li>
+            <li class="success">Password missing uppercase</li>
+            <li class="success">Password missing lowercase</li>
+            <li class="success">Password missing number</li>
+            <li class="success">Password missing special char</li>
+        </ul>
+        <h2>Watchlist Validation</h2>
+        <ul>
+            <li class="success">Valid ids</li>
+            <li class="success">Invalid user non numeric</li>
+            <li class="success">Invalid movie non numeric</li>
+            <li class="success">Invalid user zero</li>
+            <li class="success">Invalid movie zero</li>
+            <li class="success">Invalid user negative</li>
+            <li class="success">Invalid movie negative</li>
+        </ul>
+    </body>
+</html>
