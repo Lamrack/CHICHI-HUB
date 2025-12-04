@@ -14,15 +14,16 @@ $errorMessage   = "";
 
 // Handle "Add user" form submit
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email    = trim($_POST['email'] ?? '');
-    $password = $_POST['password'] ?? '';
-    $confirm  = $_POST['confirm'] ?? '';
+    $email          = trim($_POST['email'] ?? '');
+    $username       = trim($_POST['username'] ?? '');
+    $favouriteMovie = trim($_POST['favourite_movie'] ?? '');
+    $password       = $_POST['password'] ?? '';
+    $confirm        = $_POST['confirm'] ?? '';
 
     // BASIC CHECKS
-    if ($email === '' || $password === '' || $confirm === '') {
-        $errorMessage = "Email and password are required.";
-    }
-    elseif ($password !== $confirm) {
+    if ($email === '' || $username === '' || $password === '' || $confirm === '') {
+        $errorMessage = "Email, username and password are required.";
+    } elseif ($password !== $confirm) {
         $errorMessage = "Passwords don't match.";
     } else {
         // EMAIL VALIDATION (shared)
@@ -40,22 +41,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($stmt->fetch()) {
                 $errorMessage = "That email is already registered.";
             } else {
-                // Insert user
+                // Hash password
                 $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
-                // auto-generate a username from email for admin-created users
-                $localPart = strstr($email, '@', true);
-                if ($localPart === false || $localPart === '') {
-                    $localPart = 'user';
-                }
-                $username = preg_replace('/[^A-Za-z0-9_]/', '_', $localPart);
-                if ($username === '') {
-                    $username = 'user';
+                // If favourite movie left empty, store a default note
+                if ($favouriteMovie === '') {
+                    $favouriteMovie = 'N/A (admin created)';
                 }
 
-                // default favourite_movie for admin-created users
-                $favouriteMovie = 'N/A (admin created)';
-
+                // Insert user with username and favourite_movie (like register page)
                 $ins = $pdo->prepare("
                     INSERT INTO users (username, email, password_hash, favourite_movie)
                     VALUES (?, ?, ?, ?)
@@ -85,8 +79,8 @@ if (isset($_GET['delete'])) {
     }
 }
 
-// Load user list
-$stmt = $pdo->query("SELECT user_id, email FROM users ORDER BY user_id ASC");
+// Load user list (now also show username and favourite_movie)
+$stmt = $pdo->query("SELECT user_id, username, email, favourite_movie FROM users ORDER BY user_id ASC");
 $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
@@ -240,6 +234,17 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </div>
 
                 <div class="form-group">
+                    <label for="username">Username</label>
+                    <input class="input" type="text" id="username" name="username" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="favourite_movie">Favourite Movie</label>
+                    <input class="input" type="text" id="favourite_movie" name="favourite_movie"
+                           required>
+                </div>
+
+                <div class="form-group">
                     <label for="password">Password</label>
                     <input class="input" type="password" id="password" name="password" required>
                 </div>
@@ -264,7 +269,9 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <thead>
                         <tr>
                             <th style="width:60px;">ID</th>
+                            <th>Username</th>
                             <th>Email</th>
+                            <th>Favourite Movie</th>
                             <th style="width:80px;">Actions</th>
                         </tr>
                     </thead>
@@ -272,7 +279,9 @@ $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <?php foreach ($users as $u): ?>
                             <tr>
                                 <td><?= (int)$u['user_id'] ?></td>
+                                <td><?= htmlspecialchars($u['username']) ?></td>
                                 <td><?= htmlspecialchars($u['email']) ?></td>
+                                <td><?= htmlspecialchars($u['favourite_movie']) ?></td>
                                 <td>
                                     <a class="btn-danger"
                                        href="manage_users.php?delete=<?= (int)$u['user_id'] ?>"

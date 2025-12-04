@@ -27,8 +27,8 @@ if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
     <div class="admin-header-right">
         <a href="admin_dashboard.php" class="btn-teal">Home</a>
         <a href="movie_add.php" class="btn-teal">+ Add Movie</a>
-        <a href="admin_logout.php" class="btn-teal">Logout</a>
         <a href="manage_users.php" class="btn-teal">Manage Users</a>
+        <a href="admin_logout.php" class="btn-teal">Logout</a>
         
 
         
